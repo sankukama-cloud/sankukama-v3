@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'universalisme Européen ou "Quand l'Europe se prend pour l'humanité" | SANKU KAMÂ</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Public+Sans:wght@300;400;600;800&family=Lora:ital,wght=0,400;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --mauve-logo: #C7ABFF;
+            --gold-brushed: #B8960C;
+            --bg-deep: #0d0d0d;
+            --text-ivory: #F2E8D9;
+            --fond-analyse: #111111;
+            --texte-principal: #c0c0c0;
+            --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-ivory); 
+            font-family: 'Lora', serif; 
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; 
+            align-items: center; padding: 20px 5%; z-index: 2000;
+            background: linear-gradient(to bottom, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+        }
+        .logo-img { height: 40px; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; font-weight: 800;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--mauve-logo); text-shadow: 0 0 10px var(--mauve-logo); }
+
+        /* --- HERO BANNER --- */
+        .hero-article {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 60px 5%;
+            overflow: hidden;
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('image-universalisme.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.35) contrast(1.15);
+            z-index: 1;
+            transform: scale(1.05);
+            animation: slowZoom 20s ease-out forwards;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(13,13,13,0.1) 0%, rgba(13,13,13,0.7) 65%, rgba(13,13,13,1) 100%);
+            z-index: 2;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 3;
+            max-width: 950px;
+            text-align: center;
+        }
+
+        .meta-category {
+            font-family: 'Public Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            color: var(--mauve-logo);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .hero-container h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+            color: var(--gold-brushed);
+            line-height: 1.25;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+        }
+
+        .meta-reading {
+            font-family: 'Public Sans', sans-serif;
+            font-size: 0.7rem;
+            color: var(--text-ivory);
+            opacity: 0.5;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- INTERFACE ZONE DE TEXTE --- */
+        .article-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 6% 100px;
+            flex: 1;
+        }
+
+        /* Style Lettrine Or pour le premier paragraphe de l'article */
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            float: left;
+            margin-right: 15px;
+            line-height: 0.85;
+            color: var(--gold-brushed);
+        }
+
+        .article-body p {
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
+            color: rgba(242, 232, 217, 0.85);
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .article-body h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-brushed);
+            font-size: 1.7rem;
+            margin: 50px 0 20px;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        /* --- BLOC SPECIAL : NOTRE LECTURE --- */
+        .notre-lecture {
+            background-color: var(--fond-analyse);
+            border: 1px solid color-mix(in srgb, var(--mauve-logo) 35%, transparent);
+            padding: 3rem 3.5rem 3.5rem;
+            margin: 4.5rem 0;
+            position: relative;
+            font-family: 'Lora', serif;
+        }
+
+        /* Annulation ultra-précise de la lettrine globale sur le warning */
+        .notre-lecture .prisme-warning p::first-letter {
+            font-family: 'Public Sans', sans-serif !important;
+            font-size: 0.65rem !important;
+            float: none !important;
+            margin-right: 0 !important;
+            line-height: 1.5 !important;
+            color: var(--mauve-logo) !important;
+        }
+
+        .notre-lecture .prisme-warning {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid color-mix(in srgb, var(--mauve-logo) 20%, transparent);
+            opacity: 0.6;
+        }
+
+        .notre-lecture .prisme-warning svg {
+            width: 14px; height: 14px;
+            stroke: var(--mauve-logo); fill: none;
+            stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .notre-lecture .prisme-warning p {
+            font-family: 'Public Sans', sans-serif;
+            font-size: 0.65rem; font-weight: 400;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--mauve-logo); margin: 0; line-height: 1.5;
+            text-align: left;
+        }
+
+        .notre-lecture h2 {
+            font-family: 'Public Sans', sans-serif;
+            font-weight: 600; font-size: 0.7rem;
+            letter-spacing: 0.25em; text-transform: uppercase;
+            color: var(--mauve-logo); margin: 0 0 2rem 0;
+            padding: 0; border: none; background: none;
+        }
+
+        .notre-lecture p {
+            font-family: 'Lora', serif;
+            font-size: 0.925rem; line-height: 1.85;
+            color: var(--texte-principal); margin-bottom: 1.4rem;
+            font-weight: 400; text-align: justify;
+        }
+
+        .notre-lecture p:last-child { margin-bottom: 0; }
+        
+        .notre-lecture em { font-style: italic; color: #a0a0a0; }
+
+        .notre-lecture .exergue {
+            border-left: 2px solid color-mix(in srgb, var(--mauve-logo) 50%, transparent);
+            padding-left: 1.25rem; margin: 1.75rem 0;
+            font-style: italic; color: #aaaaaa; font-size: 0.95rem;
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            padding: 40px 5%; text-align: center; 
+            border-top: 1px solid rgba(184, 150, 12, 0.1); 
+            background: #0a0a0a; margin-top: auto;
+        }
+
+        footer p { 
+            color: var(--gold-brushed); font-size: 0.7rem; margin-bottom: 20px;
+            opacity: 0.6; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .socials a { 
+            color: var(--gold-brushed); font-size: 1.2rem; margin: 0 10px; 
+            transition: 0.4s; display: inline-block;
+        }
+        .socials a:hover { color: var(--mauve-logo); transform: translateY(-3px); }
+
+        @keyframes slowZoom {
+            from { transform: scale(1.05); }
+            to { transform: scale(1); }
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            nav { padding: 15px 3%; flex-direction: column; gap: 10px; }
+            .nav-links { gap: 15px; }
+            .hero-article { height: 65vh; padding-bottom: 30px; }
+            .article-body p, .notre-lecture p { text-align: left; }
+            .notre-lecture { padding: 2.25rem 1.5rem 2.5rem; margin: 2.5rem 0; }
+            .notre-lecture .prisme-warning p { font-size: 0.6rem; letter-spacing: 0.08em; }
+            .notre-lecture h2 { font-size: 0.65rem; letter-spacing: 0.2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html"><img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="articles.html" style="color: var(--mauve-logo);">← Retour aux Archives</a></li>
+            <li><a href="equipe.html">L'Équipe</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-article">
+        <div class="hero-image-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-container" data-aos="fade-up">
+            <span class="meta-category">Dossier 04 •</span>
+            <h1>L'universalisme Européen ou "Quand l'Europe se prend pour l'humanité"</h1>
+            <div class="meta-reading">
+                <i class="far fa-clock"></i> Temps de lecture : ~ 12 min
+            </div>
+        </div>
+    </header>
+
+    <main class="article-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <article class="article-body">
+            
+            <p>
+                Insère ici ton paragraphe d'introduction accrocheur (Partie I). La première lettre de ce paragraphe se transformera automatiquement en une magnifique lettrine dorée dans le pur style éditorial de Sanku Kamâ.
+            </p>
+
+            <p>
+                Poursuis ton développement ici pour les parties II, III et IV (la conquête intellectuelle, l'invisibilisation des traces, les relais internes et le langage du développement). Tu peux ajouter autant de paragraphes et de titres `<h2>` que nécessaire.
+            </p>
+
+            <h2>Exemple de sous-titre de section</h2>
+
+            <p>
+                Exemple de paragraphe de transition. Chaque fait doit être adossé à sa lecture structurelle sans jamais tomber dans le catalogue de griefs, comme dicté par notre charte.
+            </p>
+
+            <div class="notre-lecture">
+
+                <div class="prisme-warning">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                        <line x1="3" y1="3" x2="21" y2="21"/>
+                    </svg>
+                    <p><strong>Prisme Sanku Kamâ —</strong> Cette section livre notre grille de lecture et notre analyse critique des faits présentés ci-dessus.</p>
+                </div>
+
+                <h2>V. Notre lecture chez Sanku Kama</h2>
+
+                <p>
+                    Colle ici le texte tranchant et direct généré pour la Partie V. Ce bloc se démarque visuellement grâce à sa fine bordure mauve et son fond contrasté, matérialisant parfaitement la rupture éditoriale où nous affirmons notre position sur la souveraineté culturelle.
+                </p>
+
+                <div class="exergue">
+                    "Optionnel : Tu peux utiliser cette classe 'exergue' pour détacher une citation brute ou une punchline percutante au milieu de l'analyse."
+                </div>
+
+                <p>
+                    Termine ici ton texte avec la question ouverte finale pour pousser la réflexion du lecteur sans clore brutalement le débat.
+                </p>
+
+            </div>
+
+            </article>
+    </main>
+
+    <footer>
+        <p>© SANKU KAMÂ. Tous droits réservés.</p>
+        <div class="socials">
+            <a href="https://www.instagram.com/sanku.kama" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@sanku.kama" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/company/sanku-kama/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1200, once: true });</script>
+</body>
+</html>
+
+```
