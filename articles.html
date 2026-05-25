@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives & Dossiers | SANKU KAMÂ</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Public+Sans:wght@300;800&family=Lora:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --mauve-logo: #C7ABFF;
+            --gold-brushed: #B8960C;
+            --bg-deep: #0d0d0d;
+            --text-ivory: #F2E8D9;
+            --folder-bg: #1a1a1a;
+            --transition-folder: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-ivory); 
+            font-family: 'Lora', serif; 
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; 
+            align-items: center; padding: 20px 5%; z-index: 2000;
+            background: linear-gradient(to bottom, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+        }
+        .logo-img { height: 40px; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; font-weight: 800;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--mauve-logo); text-shadow: 0 0 10px var(--mauve-logo); }
+
+        /* --- HEADER --- */
+        .archive-header { padding: 160px 5% 40px; text-align: center; }
+        .archive-header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 8vw, 3.5rem); color: var(--gold-brushed); margin-bottom: 10px; }
+        .archive-header p { font-style: italic; color: var(--mauve-logo); opacity: 0.8; font-size: clamp(0.9rem, 3vw, 1.1rem); }
+
+        /* --- GRID DES DOSSIERS --- */
+        .articles-grid {
+            max-width: 1200px; margin: 0 auto 80px;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px; padding: 0 5%;
+            flex: 1;
+        }
+
+        /* --- ANIMATION DOSSIER --- */
+        .folder-wrapper {
+            perspective: 1500px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: block;
+        }
+
+        .folder-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background: var(--folder-bg);
+            border: 1px solid rgba(184, 150, 12, 0.15);
+            transform-style: preserve-3d;
+            transition: var(--transition-folder);
+        }
+
+        .folder-tab {
+            position: absolute;
+            top: -18px; left: 0;
+            width: 110px; height: 20px;
+            background: var(--folder-bg);
+            border: 1px solid rgba(184, 150, 12, 0.15);
+            border-bottom: none;
+            border-radius: 8px 25px 0 0;
+        }
+
+        .folder-content {
+            padding: 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 0.1;
+            transition: var(--transition-folder);
+        }
+
+        .folder-image {
+            position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 140px;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(1) brightness(0.4);
+            transition: var(--transition-folder);
+            border: 1px solid rgba(184, 150, 12, 0.1);
+        }
+
+        .folder-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            color: var(--gold-brushed);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        /* Couverture du dossier */
+        .folder-cover {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(145deg, #1e1e1e, #111);
+            border: 1px solid rgba(184, 150, 12, 0.2);
+            z-index: 5;
+            transform-origin: left;
+            transition: var(--transition-folder);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+        }
+
+        /* Tampon CONFIDENTIEL */
+        .folder-cover::after {
+            content: "CONFIDENTIEL";
+            font-family: 'Public Sans', sans-serif;
+            font-weight: 800;
+            border: 3px solid rgba(184, 150, 12, 0.15);
+            padding: 8px 15px;
+            color: rgba(184, 150, 12, 0.15);
+            transform: rotate(-20deg);
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            transition: 0.5s;
+        }
+
+        /* --- EFFET AU SURVOL --- */
+        .folder-wrapper:hover .folder-cover {
+            transform: rotateY(-110deg);
+        }
+
+        .folder-wrapper:hover .folder-content {
+            opacity: 1;
+        }
+
+        .folder-wrapper:hover .folder-image {
+            filter: grayscale(0) brightness(1);
+        }
+
+        .folder-wrapper:hover .folder-cover::after {
+            color: var(--mauve-logo);
+            border-color: var(--mauve-logo);
+            opacity: 0.8;
+        }
+
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 768px) {
+            nav { padding: 15px 3%; flex-direction: column; gap: 10px; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.6rem; letter-spacing: 0; }
+            
+            .archive-header { padding-top: 130px; }
+            
+            .articles-grid { 
+                grid-template-columns: 1fr; 
+                padding: 0 8%;
+                gap: 50px;
+            }
+
+            .folder-container { height: 400px; }
+            
+            .folder-wrapper:hover .folder-cover {
+                transform: rotateY(-95deg);
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            padding: 40px 5%; 
+            text-align: center; 
+            border-top: 1px solid rgba(184, 150, 12, 0.1); 
+            background: #0a0a0a;
+            margin-top: auto;
+        }
+
+        footer p { 
+            color: var(--gold-brushed); 
+            font-size: 0.7rem; 
+            margin-bottom: 20px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .socials a { 
+            color: var(--gold-brushed); 
+            font-size: 1.2rem; 
+            margin: 0 10px; 
+            transition: 0.4s;
+            display: inline-block;
+        }
+
+        .socials a:hover { 
+            color: var(--mauve-logo); 
+            transform: translateY(-3px); 
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html"><img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="articles.html" style="color: var(--mauve-logo);">Articles</a></li>
+            <li><a href="equipe.html">L'Équipe</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="archive-header" data-aos="fade-down">
+        <h1>Les Archives</h1>
+        <p>Rétablir la mémoire, pièce par pièce.</p>
+    </header>
+
+    <main class="articles-grid">
+
+        <a href="article-angolagate.html" class="folder-wrapper" data-aos="fade-up">
+            <div class="folder-container">
+                <div class="folder-tab"></div>
+                <div class="folder-cover"></div>
+                <div class="folder-content">
+                    <div class="folder-image" style="background-image: url('https://images.unsplash.com/photo-1547623641-82fbb83476e9?q=80&w=1000');"></div>
+                    <h2 class="folder-title">L’Angolagate ou l'industrialisation du chaos</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-ivory); opacity: 0.7;">Analyse d'un système de corruption et de guerre.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="article-femmes-resistances.html" class="folder-wrapper" data-aos="fade-up" data-aos-delay="100">
+            <div class="folder-container">
+                <div class="folder-tab"></div>
+                <div class="folder-cover"></div>
+                <div class="folder-content">
+                    <div class="folder-image" style="background-image: url('article-femme.png');"></div>
+                    <h2 class="folder-title">Les femmes africaines dans les résistances coloniales</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-ivory); opacity: 0.7;">Les visages oubliés de la liberté.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="article-empires-africains.html" class="folder-wrapper" data-aos="fade-up" data-aos-delay="200">
+            <div class="folder-container">
+                <div class="folder-tab"></div>
+                <div class="folder-cover"></div>
+                <div class="folder-content">
+                    <div class="folder-image" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000');"></div>
+                    <h2 class="folder-title">Les grands empires Africains</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-ivory); opacity: 0.7;">Grandeur et structures des puissances oubliées.</p>
+                </div>
+            </div>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>© SANKU KAMÂ. Tous droits réservés.</p>
+        <div class="socials">
+            <a href="https://www.instagram.com/sanku.kama" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@sanku.kama" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/company/sanku-kama/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1200, once: true });</script>
+</body>
+</html>

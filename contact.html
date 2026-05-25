@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal de Transmission | SANKU KAMÂ</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Public+Sans:wght@300;800&family=Lora:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --mauve-logo: #C7ABFF;
+            --gold-brushed: #B8960C;
+            --bg-deep: #0d0d0d;
+            --text-ivory: #F2E8D9;
+            --transition-prestige: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-ivory); 
+            font-family: 'Lora', serif; 
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- ANIMATION D'ARRIÈRE-PLAN --- */
+        .bg-transmission {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-letter {
+            position: absolute;
+            color: var(--gold-brushed);
+            opacity: 0.12;
+            animation: float-letter linear infinite;
+        }
+
+        @keyframes float-letter {
+            0% { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.12; }
+            50% { transform: translateY(50vh) translateX(50px) rotate(180deg); }
+            90% { opacity: 0.12; }
+            100% { transform: translateY(-20vh) translateX(-20px) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%; z-index: 2000;
+            background: linear-gradient(to bottom, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+        }
+
+        .nav-logo-wrapper { flex: 0 1 auto; }
+        .logo-img { height: 45px; display: block; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; font-weight: 800;
+            transition: var(--transition-prestige);
+        }
+        .nav-links a:hover { color: var(--mauve-logo); text-shadow: 0 0 10px var(--mauve-logo); }
+
+        /* --- CONTENU --- */
+        .container { 
+            max-width: 1200px; 
+            margin: 180px auto 100px auto; 
+            padding: 0 5%; flex: 1; position: relative;
+        }
+
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px;
+            margin-top: 60px; align-items: center;
+        }
+
+        .contact-header h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold-brushed); letter-spacing: 5px; }
+        .contact-header p { font-style: italic; font-size: 1.4rem; color: var(--mauve-logo); opacity: 0.8; }
+
+        /* --- SECTION ENVELOPPE & INFOS (CORRIGÉE) --- */
+        .envelope-section { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 30px; 
+            text-align: center; /* Centre tout le contenu textuel */
+        }
+
+        .envelope-card {
+            width: 280px; height: 180px; background: linear-gradient(145deg, #1a1a1a, #141414);
+            border: 1px solid rgba(184, 150, 12, 0.2); position: relative;
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;
+        }
+
+        .wax-seal {
+            width: 70px; height: 70px; background-color: var(--mauve-logo); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4), inset 0 2px 5px rgba(255,255,255,0.2);
+        }
+        .wax-seal i { color: rgba(13,13,13,0.8); font-size: 2.2rem; }
+
+        /* Style des écritures corrigé */
+        .info-card h3 { 
+            font-family: 'Public Sans', sans-serif; 
+            color: var(--gold-brushed); 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 3px; 
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .mail-field { margin-bottom: 35px; }
+        
+        .mail-link { 
+            color: var(--text-ivory); 
+            text-decoration: none; 
+            font-size: 1.2rem; 
+            border-bottom: 1px solid rgba(184, 150, 12, 0.3); 
+            transition: var(--transition-prestige);
+            font-family: 'Lora', serif;
+        }
+        .mail-link:hover { color: var(--gold-brushed); border-color: var(--gold-brushed); }
+
+        .social-icons-wrap { display: flex; gap: 30px; justify-content: center; margin-top: 10px; }
+        .social-icons-wrap a { color: var(--gold-brushed); font-size: 1.5rem; transition: var(--transition-prestige); }
+        .social-icons-wrap a:hover { color: var(--mauve-logo); transform: translateY(-3px); }
+
+        /* --- FORMULAIRE --- */
+        .form-container {
+            background: rgba(255, 255, 255, 0.02); padding: 60px; 
+            border: 1px solid rgba(184, 150, 12, 0.1); backdrop-filter: blur(5px);
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .form-group { margin-bottom: 40px; }
+        label { display: block; font-family: 'Public Sans', sans-serif; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 2px; color: var(--gold-brushed); margin-bottom: 5px; }
+        
+        input, select, textarea {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(184, 150, 12, 0.2);
+            padding: 12px 0; color: var(--text-ivory); font-family: 'Lora', serif; transition: var(--transition-prestige);
+            border-radius: 0;
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-bottom: 1px solid var(--mauve-logo); }
+
+        .btn-submit {
+            background: transparent; color: var(--mauve-logo); border: 1px solid var(--mauve-logo); 
+            padding: 22px 40px; font-weight: 800; font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; letter-spacing: 3px; cursor: pointer; width: 100%;
+            transition: var(--transition-prestige);
+        }
+        .btn-submit:hover { background: var(--mauve-logo); color: var(--bg-deep); }
+
+        /* --- FOOTER --- */
+        footer { padding: 50px 10%; border-top: 1px solid rgba(184, 150, 12, 0.1); text-align: center; }
+        footer p { color: var(--gold-brushed); font-family: 'Cinzel', serif; font-size: 0.75rem; opacity: 0.6; }
+
+        @media (max-width: 900px) {
+            nav { flex-direction: column !important; height: auto; padding: 20px 0; }
+            .container { margin-top: 160px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 40px 20px; border: none; border-top: 1px solid rgba(184, 150, 12, 0.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-transmission">
+        <i class="fas fa-envelope floating-letter" style="left: 5%; font-size: 2rem; animation-duration: 22s; animation-delay: 0s;"></i>
+        <i class="fas fa-scroll floating-letter" style="left: 15%; font-size: 2.5rem; animation-duration: 30s; animation-delay: -5s;"></i>
+        <i class="fas fa-paper-plane floating-letter" style="left: 25%; font-size: 1.5rem; animation-duration: 18s; animation-delay: -2s;"></i>
+        <i class="fas fa-envelope-open-text floating-letter" style="left: 40%; font-size: 2.2rem; animation-duration: 25s; animation-delay: -10s;"></i>
+        <i class="fas fa-scroll floating-letter" style="left: 60%; font-size: 1.8rem; animation-duration: 28s; animation-delay: -7s;"></i>
+        <i class="fas fa-envelope floating-letter" style="left: 75%; font-size: 2rem; animation-duration: 20s; animation-delay: -15s;"></i>
+        <i class="fas fa-feather-alt floating-letter" style="left: 85%; font-size: 1.5rem; animation-duration: 24s; animation-delay: -3s;"></i>
+        <i class="fas fa-scroll floating-letter" style="left: 95%; font-size: 2.3rem; animation-duration: 32s; animation-delay: -12s;"></i>
+    </div>
+
+    <nav>
+        <div class="nav-logo-wrapper">
+            <a href="index.html">
+                <img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="equipe.html">L'Équipe</a></li>
+            <li><a href="contact.html" style="color: var(--mauve-logo);">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="contact-header" data-aos="fade-up">
+            <h1>Le <em>Canal</em></h1>
+            <p>Bureau de transmission de renseignements.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="envelope-section" data-aos="fade-right">
+                <div class="envelope-card">
+                    <div class="wax-seal">
+                        <i class="fas fa-dove"></i>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>Canal principal</h3>
+                    <div class="mail-field">
+                        <a href="mailto:sankukama@gmail.com" class="mail-link">sankukama@gmail.com</a>
+                    </div>
+                    
+                    <h3>Un même combat, d'autres champs de batailles.</h3>
+                    <div class="social-icons-wrap">
+                        <a href="https://www.instagram.com/sanku.kama/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@sanku.kama" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.linkedin.com/company/sanku-kama/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container" data-aos="fade-left">
+                <form action="https://formspree.io/f/xnjorjpp" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Identité (Prénom)</label>
+                            <input type="text" name="prenom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Identité (Nom)</label>
+                            <input type="text" name="nom" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Canal de retour (Email)</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nature du Renseignement</label>
+                        <select name="objet" required>
+                            <option value="" disabled selected>Choisir une voie</option>
+                            <option>Suggestion de sujet</option>
+                            <option>Signalement d'imprécision</option>
+                            <option>Collaboration</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Renseignements</label>
+                        <textarea name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">SCELLER ET ENVOYER LE DOSSIER</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© SANKU KAMÂ — BUREAU DE TRANSMISSION</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1500, once: true });</script>
+</body>
+</html>
+```

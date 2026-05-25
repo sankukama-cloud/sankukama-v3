@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANKU KAMÂ | Média de Réappropriation</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;1,600&family=Public+Sans:wght@300;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #0D0D0D;
+            --gold-brushed: #B8960C;
+            --mauve-logo: #C7ABFF;
+            --text-ivory: #F2E8D9;
+            --transition-smooth: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-ivory); font-family: 'Lora', serif; overflow-x: hidden; line-height: 1.8; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; 
+            align-items: center; padding: 20px 5%; z-index: 1000;
+            background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent);
+        }
+        .logo-img { height: 45px; animation: logoAppear 2s ease-out forwards; }
+        @keyframes logoAppear { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a {
+            text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; transition: var(--transition-smooth);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 0 10%;
+        }
+        .hero p { font-style: italic; font-size: clamp(1.2rem, 4vw, 2.2rem); max-width: 900px; margin-bottom: 15px; }
+        .author { font-family: 'Cinzel'; color: var(--gold-brushed); letter-spacing: 3px; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- SECTIONS --- */
+        section { padding: 80px 10%; max-width: 1200px; margin: 0 auto; }
+        h2 { font-family: 'Cinzel'; color: var(--gold-brushed); margin-bottom: 30px; font-size: clamp(1.4rem, 3vw, 2.2rem); letter-spacing: 2px; }
+        
+        .grid-concept { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; }
+        .highlight-mauve { color: var(--mauve-logo); font-weight: 600; }
+
+        .problem-container {
+            background: rgba(184, 150, 12, 0.03); padding: 50px; border-left: 2px solid var(--gold-brushed); margin: 80px 0;
+        }
+
+        /* SECTION QUE FAISONS NOUS - TEXTE PUR */
+        .action-container { 
+            margin: 100px 0; 
+            border-top: 1px solid rgba(184, 150, 12, 0.1);
+            padding-top: 60px;
+        }
+        .action-content { max-width: 850px; }
+        .action-text-main { font-size: 1.3rem; margin-bottom: 30px; color: var(--mauve-logo); font-weight: 500; }
+        .action-text-sub { font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px; }
+
+        /* --- ANIMATION DU NOEUD EN OR --- */
+        .knot-container {
+            position: relative; width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; margin: 80px 0;
+        }
+        .knot-line {
+            height: 1px; width: 0; background: var(--gold-brushed); position: absolute;
+            transition: width 1.5s ease-in-out;
+        }
+        .knot-container.aos-animate .knot-line { width: 100%; }
+        .knot-icon {
+            color: var(--gold-brushed); font-size: 1.8rem; z-index: 2; background: var(--bg-deep); padding: 0 30px;
+            transition: transform 1s ease;
+        }
+        .knot-container.aos-animate .knot-icon { transform: scale(0); opacity: 0; }
+
+        /* ECRITEAU */
+        .discovery-title {
+            text-align: center; font-family: 'Cinzel'; color: var(--mauve-logo);
+            letter-spacing: 8px; font-size: 1.3rem; margin-bottom: 60px; text-transform: uppercase;
+        }
+
+        /* CARD INVESTIGATION */
+        .investigation-card {
+            border: 1px solid rgba(184, 150, 12, 0.2); padding: 60px; text-align: center;
+            transition: var(--transition-smooth); background: rgba(199, 171, 255, 0.02);
+        }
+        .cta {
+            display: inline-block; margin-top: 35px; padding: 15px 40px;
+            border: 1px solid var(--gold-brushed); color: var(--gold-brushed);
+            text-decoration: none; font-family: 'Public Sans'; font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;
+        }
+        .cta:hover { background: var(--gold-brushed); color: var(--bg-deep); }
+
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 15px; }
+            .nav-links { margin-top: 15px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { font-size: 0.6rem; padding: 5px 8px; border: 1px solid rgba(184, 150, 12, 0.1); }
+            section { padding: 60px 6%; }
+            .hero { padding-top: 80px; }
+            .action-text-main { font-size: 1.15rem; }
+        }
+
+        footer { padding: 50px 5%; border-top: 1px solid rgba(184, 150, 12, 0.1); text-align: center; }
+        .socials { margin-top: 25px; }
+        .socials a { color: var(--gold-brushed); font-size: 1.3rem; margin: 0 15px; transition: 0.3s; }
+        .socials a:hover { color: var(--mauve-logo); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">
+            <img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="articles.html">Articles</a>
+            <a href="equipe.html">L'Équipe</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p data-aos="fade-up">« Il faut penser l'Afrique à partir d'elle-même. »</p>
+        <span class="author" data-aos="fade-in" data-aos-delay="400">— Achille Mbembe</span>
+    </header>
+
+    <section>
+        <div class="grid-concept">
+            <div class="content-box" data-aos="fade-right">
+                <h2>Pourquoi SANKU KAMÂ existe ?</h2>
+                <p>Un média né pour reconstruire une <span class="highlight-mauve">compréhension rigoureuse</span> de l’Afrique, en rétablissant sa mémoire historique et en reprenant le contrôle de son récit.</p>
+            </div>
+            <div class="content-box" data-aos="fade-left">
+                <h2>Qui nous sommes ?</h2>
+                <p>SANKU s’inspire du symbole <span class="highlight-mauve">Sankofa</span> (culture Akan). Un oiseau qui se retourne pour récupérer un œuf posé sur son dos : revenir en arrière pour récupérer ce qui a été oublié, afin de mieux avancer.</p>
+                <p style="margin-top:10px; font-weight:bold;">KAMÂ signifie “Terre Noire”.</p>
+            </div>
+        </div>
+
+        <div class="problem-container" data-aos="zoom-in">
+            <h2>Le Problème</h2>
+            <p>Pendant des générations, on nous a appris à nous regarder avec les yeux de ceux qui nous ont dominés. L'Afrique est soit réduite aux crises, soit idéalisée sans rigueur.</p>
+            
+            <div style="margin-top: 30px; border-top: 1px solid rgba(199, 171, 255, 0.1); padding-top: 25px;">
+                <h3 style="color: var(--mauve-logo); font-family: 'Cinzel'; margin-bottom: 12px; font-size: 1.1rem;">Le sentiment de honte</h3>
+                <p>Honte d’être africain. Honte de sa culture, de ses langues. <span class="highlight-mauve" style="text-decoration: underline;">Tant qu’il persiste, aucune reconstruction n’est possible.</span></p>
+            </div>
+        </div>
+
+        <div class="action-container" data-aos="fade-up">
+            <h2>Que faisons-nous ?</h2>
+            <div class="action-content">
+                <p class="action-text-main">SANKU KAMÂ produit des contenus pour comprendre l’Afrique à partir de ses réalités.</p>
+                
+                <p class="action-text-sub">On travaille sur l’histoire des pays africains, leurs structures politiques, leurs dynamiques sociales et économiques, et on les met en lien avec ce qui se passe aujourd’hui.</p>
+                
+                <p class="action-text-sub">On écrit, on raconte, on montre, avec des formats différents mais une même exigence de fond.</p>
+                
+                <p class="action-text-sub">L’idée, c’est de donner des <span class="highlight-mauve">clés de lecture solides</span> pour comprendre le continent sans passer par des raccourcis ou des récits approximatifs.</p>
+            </div>
+        </div>
+
+        <div class="knot-container" data-aos="custom-knot">
+            <div class="knot-line"></div>
+            <div class="knot-icon"><i class="fas fa-link"></i></div>
+        </div>
+
+        <h3 class="discovery-title" data-aos="fade-up">Découvrez nos analyses</h3>
+
+        <div class="investigation-card" data-aos="fade-up">
+            <span style="font-family: 'Public Sans'; letter-spacing: 5px; color: var(--mauve-logo); font-size: 0.75rem;">DOSSIER ACTIF</span>
+            <h2 style="margin: 20px 0; font-size: clamp(1.5rem, 4vw, 2.5rem);">L'Angolagate</h2>
+            <p style="max-width: 650px; margin: 0 auto;">Plongée au cœur d'un système où le chaos est devenu une ressource. Une analyse inédite entre 1993 et 2008.</p>
+            <a href="articles.html" class="cta">ACCÉDER À L'ENQUÊTE</a>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-family: 'Cinzel'; letter-spacing: 2px;">© SANKU KAMÂ. Tous droits réservés.</p>
+        <div class="socials">
+            <a href="https://www.instagram.com/sanku.kama" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@sanku.kama" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/company/sanku-kama/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>

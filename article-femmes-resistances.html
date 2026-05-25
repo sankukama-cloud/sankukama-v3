@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Femmes Africaines dans les Résistances Coloniales | SANKU KAMÂ</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Public+Sans:wght@300;800&family=Lora:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --mauve-logo: #C7ABFF;
+            --gold-brushed: #B8960C;
+            --bg-deep: #0d0d0d;
+            --text-ivory: #F2E8D9;
+            --card-bg: #141414;
+            --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--text-ivory); 
+            font-family: 'Lora', serif; 
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; 
+            align-items: center; padding: 20px 5%; z-index: 2000;
+            background: linear-gradient(to bottom, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+        }
+        .logo-img { height: 40px; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; font-weight: 800;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--mauve-logo); text-shadow: 0 0 10px var(--mauve-logo); }
+
+        /* --- HERO BANNER ESTHÉTIQUE --- */
+        .hero-article {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 450px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 60px 5%;
+            overflow: hidden;
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('article-femme.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) contrast(1.1);
+            z-index: 1;
+            transform: scale(1.05);
+            animation: slowZoom 20s ease-out forwards;
+        }
+
+        /* Dégradé lourd en bas pour fusionner avec le fond noir du site */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.8) 70%, rgba(13,13,13,1) 100%);
+            z-index: 2;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .meta-category {
+            font-family: 'Public Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            color: var(--mauve-logo);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .hero-container h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            color: var(--gold-brushed);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .meta-reading {
+            font-family: 'Public Sans', sans-serif;
+            font-size: 0.7rem;
+            color: var(--text-ivory);
+            opacity: 0.5;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- ZONE DE TEXTE (CORPS DE L'ARTICLE) --- */
+        .article-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 6% 100px;
+            flex: 1;
+        }
+
+        /* Style de la première lettre stylisée (Lettrine) */
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            float: left;
+            margin-right: 15px;
+            line-height: 0.85;
+            color: var(--gold-brushed);
+        }
+
+        /* Emplacements réservés pour tes styles de contenu futurs */
+        .article-body p {
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
+            color: rgba(242, 232, 217, 0.85);
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .article-body h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-brushed);
+            font-size: 1.8rem;
+            margin: 50px 0 20px;
+            letter-spacing: 1px;
+        }
+
+        .article-body blockquote {
+            border-left: 3px solid var(--mauve-logo);
+            padding-left: 25px;
+            margin: 40px 0;
+            font-style: italic;
+            color: var(--mauve-logo);
+            font-size: 1.2rem;
+            background: rgba(199, 171, 255, 0.03);
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            padding: 40px 5%; 
+            text-align: center; 
+            border-top: 1px solid rgba(184, 150, 12, 0.1); 
+            background: #0a0a0a;
+            margin-top: auto;
+        }
+
+        footer p { 
+            color: var(--gold-brushed); 
+            font-size: 0.7rem; 
+            margin-bottom: 20px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .socials a { 
+            color: var(--gold-brushed); 
+            font-size: 1.2rem; 
+            margin: 0 10px; 
+            transition: 0.4s;
+            display: inline-block;
+        }
+
+        .socials a:hover { color: var(--mauve-logo); transform: translateY(-3px); }
+
+        /* --- ANIMATIONS --- */
+        @keyframes slowZoom {
+            from { transform: scale(1.05); }
+            to { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 3%; flex-direction: column; gap: 10px; }
+            .nav-links { gap: 15px; }
+            .hero-article { height: 60vh; padding-bottom: 30px; }
+            .article-body p { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html"><img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="articles.html" style="color: var(--mauve-logo);">← Retour aux Archives</a></li>
+            <li><a href="equipe.html">L'Équipe</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-article">
+        <div class="hero-image-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-container" data-aos="fade-up">
+            <span class="meta-category">Dossier 02 • Résistance</span>
+            <h1>Les femmes africaines dans les résistances coloniales</h1>
+            <div class="meta-reading">
+                <i class="far fa-clock"></i> Temps de lecture : ~ 8 min
+            </div>
+        </div>
+    </header>
+
+    <main class="article-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <article class="article-body">
+            <h2>I. Tension d'ouverture</h2>
+
+<blockquote>
+    "Le problème n'est pas l'absence des femmes dans l'histoire des résistances africaines, mais l'incapacité des catégories utilisées à reconnaître leur rôle réel."
+</blockquote>
+
+<p>
+    Les archives coloniales françaises, britanniques, et plus largement européennes, partagent une caractéristique commune qui est qu'elles enregistrent les résistances africaines à travers les rapports militaires, les correspondances entre gouverneurs et les comptes rendus d'opérations de pacification. Ce sont des documents produits par des hommes, adressés à des hommes, pour décrire des affrontements entre hommes. La société civile africaine — et les femmes en particulier — n'y apparaît que lorsqu'elle perturbe suffisamment l'ordre colonial pour forcer une mention administrative.<sup><a href="#fn1" id="ref1">1</a></sup> Ce filtre a durablement déformé la façon dont l'historiographie a construit le récit des résistances. En outre, comme une simple succession de batailles, de chefs vaincus, de soulèvements réprimés, dans laquelle les femmes occupent, au mieux, une place anecdotique.<sup><a href="#fn2" id="ref2">2</a></sup>
+</p>
+
+<p>
+    C'est dans cet écart entre la réalité des résistances et leur mise en récit que se situe le problème analytique central de cet article. La Guerre des Femmes igbo de 1929, au Nigeria, en est une illustration parmi d'autres : des dizaines de milliers de femmes coordonnées à travers des centaines de villages ont paralysé les circuits commerciaux et contraint l'administration britannique à revoir son organisation fiscale.<sup><a href="#fn3" id="ref3">3</a></sup> L'événement est documenté, certes, mais il reste traité comme une anomalie, un épisode, plutôt que comme la preuve d'une capacité d'organisation politique réelle. Ce traitement dit moins quelque chose sur les femmes igbo que sur les catégories utilisées pour lire les résistances africaines.
+</p>
+
+<p>
+    Ces catégories ont produit une distorsion durable. Les femmes ne constituent pas un appui périphérique des résistances africaines. Elles en participent à la structuration organique en mobilisant des ressources économiques, en maintenant les réseaux logistiques, en exerçant des commandements directs et en assurant les bases sociales sans lesquelles aucune résistance durable n'est possible.<sup><a href="#fn4" id="ref4">4</a></sup> Sans intégration de cette réalité, la compréhension des résistances africaines — en Afrique subsaharienne comme au Maghreb, de la fin du XIXe siècle jusqu'aux indépendances — reste analytiquement incomplète.
+</p>
+
+<p>
+    L'absence des femmes dans le récit historique dominant produit clairement une lecture erronée de la nature même du conflit colonial.
+</p>
+
+<section class="footnotes">
+    <ol>
+        <li id="fn1">
+            Lucas, Nicole, et Ohana, Danielle. <em>Femmes à l'épreuve de la colonisation et des indépendances</em>. Paris : Éditions Le Manuscrit, 2023. <a href="#ref1" class="backlink"></a>
+        </li>
+        <li id="fn2">
+            Hugon, Anne (dir.). <em>Histoire des femmes en situation coloniale, Afrique et Asie, XXe siècle</em>. Paris : Karthala, 2004. <a href="#ref2" class="backlink"></a>
+        </li>
+        <li id="fn3">
+            Judith Van Allen, « Aba Riots » or Igbo « Women's War »? Ideology, Stratification, and the Invisibility of Women, 1976. <a href="#ref3" class="backlink"></a>
+        </li>
+        <li id="fn4">
+            Coquery-Vidrovitch, Catherine. <em>Les Africaines, Histoire des femmes d'Afrique noire, du XIXe au XXe siècle</em>. Paris : La Découverte, 2013. <a href="#ref4" class="backlink"></a>
+        </li>
+    </ol>
+</section>
+     <h2>II. La fabrique de l'angle mort : conditions de l'invisibilisation</h2>
+
+<p>
+    Le récit dominant des résistances africaines est construit sur un critère militaire : des chefs africains face à des armées coloniales ; des batailles ; des traités signés sous contrainte. Ce cadre définit ce qui compte comme « résistance » et, dans la même veine, qui compte comme résistant. Les formes d'opposition majoritairement exercées par les femmes — contrôle des marchés, refus du travail forcé, transmission clandestine d'informations, maintien des structures sociales sous pression — en sont exclues par construction.
+</p>
+
+<p>
+    Les archives coloniales, contrairement à ce que l'on peut penser, n'ont pas été produites pour décrire les sociétés africaines, mais pour les administrer. Cette finalité détermine ce qui est « enregistré ». Les colons, issus de sociétés où les femmes étaient légalement incapables et politiquement exclues, ont interrogé des interlocuteurs masculins et projeté sur les sociétés africaines leur propre structure patriarcale.<sup><a href="#fn5" id="ref5">5</a></sup> Le résultat n'est pas tant une description incomplète, mais plutôt une description orientée qui valide l'ordre colonial en représentant l'entièreté des sociétés africaines comme des structures hiérarchiques masculines auxquelles l'administration peut s'adresser directement. Les femmes n'y apparaissent que lorsqu'elles constituent un problème administratif : perturbation de marché, agitation villageoise. Elles n'entrent dans l'archive qu'à l'instant exact où elles dérangent l'ordre, réduisant ainsi leurs stratégies de résistance à de simples incidents de parcours, déconnectés de leur rôle social et politique profond.<sup><a href="#fn6" id="ref6">6</a></sup> Le rapport Savineau de 1938, produit à partir d'enquêtes directes auprès des femmes en AOF, reste une exception précisément parce qu'il rompt avec cette logique.<sup><a href="#fn7" id="ref7">7</a></sup>
+</p>
+
+<p>
+    Valoriser le militaire comme critère de résistance légitime est également un choix politique qui déplace la résistance du terrain social vers le terrain militaire, là où l'administration coloniale disposait d'une supériorité évidente.<sup><a href="#fn8" id="ref8">8</a></sup> Ce déplacement produit un double effet. D'une part, il réduit la résistance africaine à une série de défaites militaires, occultant une opposition sociale permanente et diffuse que l'armée coloniale ne pouvait pas réprimer frontalement. Elikia M'Bokolo, en parlant des femmes, l'a formulé très distinctement en ces termes : « Leur rôle fut même souvent décisif, mais nous sommes victimes du regard des colonisateurs qui préféraient taire les affrontements avec les femmes ».<sup><a href="#fn9" id="ref9">9</a></sup>
+</p>
+
+<p>
+    Les nouvelles élites au pouvoir après les indépendances ont hérité des structures administratives coloniales et de leur rapport au savoir historique. La construction des récits nationaux a valorisé les figures masculines de la lutte armée, et ce parce que ces figures légitiment un ordre politique dans lequel les femmes restent exclues des positions de pouvoir — en effaçant la preuve historique qu'elles les avaient occupées. Quoi de mieux pour illustrer cette dynamique que le cas algérien. En 1958, <em>El Moudjahid</em> proclamait que « l'Algérienne est déjà libre parce qu'elle a participé à la guerre de libération » ; au moment de l'indépendance, Mohamed Khider, l'un des chefs du FLN, répondait à une militante que « les femmes doivent revenir à leur couscous ».<sup><a href="#fn10" id="ref10">10</a></sup> La reconnaissance symbolique a fonctionné comme substitut à la reconnaissance politique réelle.
+</p>
+
+<p>
+    Les différents mécanismes décrits précédemment — filtre documentaire, critère militaire et reproduction après les indépendances — forment un système cohérent, avec des éléments interdépendants. Chacun alimente les deux autres. Les archives orientées fournissent la matière du récit militarisé, et le récit militarisé fournit la légitimité des nouvelles élites qui perpétuent l'effacement. Loin d'être une série innocente de biais isolés, c'est une infrastructure de (re)production de l'invisibilité, dont les effets sur la compréhension des résistances coloniales sont aussi réels que ceux d'une censure explicite.
+</p>
+
+<section class="footnotes">
+    <ol start="5">
+        <li id="fn5">
+            Hugon, Anne (dir.). <em>Histoire des femmes en situation coloniale, Afrique et Asie, XXe siècle</em>. Paris : Karthala, 2004. <a href="#ref5" class="backlink"></a>
+        </li>
+        <li id="fn6">
+            Lucas, Nicole, et Ohana, Danielle. <em>Femmes à l'épreuve de la colonisation et des indépendances</em>. Paris : Éditions Le Manuscrit, 2023. <a href="#ref6" class="backlink"></a>
+        </li>
+        <li id="fn7">
+            Denise Savineau, <em>La famille en Afrique Occidentale Française et la condition de la femme</em>, Rapport présenté au Gouverneur général de l'AOF, Dakar, 1938. <a href="#ref7" class="backlink"></a>
+        </li>
+        <li id="fn8">
+            Bouilly, Emmanuelle, et Rillon, Ophélie. « Relire les décolonisations d'Afrique francophone au prisme du genre ». <em>Le Mouvement Social</em>, 2016/2, n° 255. <a href="#ref8" class="backlink"></a>
+        </li>
+        <li id="fn9">
+            Elikia M'Bokolo, cité dans Lucas, Nicole, et Ohana, Danielle. <em>Femmes à l'épreuve de la colonisation et des indépendances</em>. Paris : Éditions Le Manuscrit, 2023. <a href="#ref9" class="backlink"></a>
+        </li>
+        <li id="fn10">
+            Lucas, Ohana, op. cit., citant Khaoula Taleb Ibrahimi et la déclaration de Mohamed Khider. <a href="#ref10" class="backlink"></a>
+        </li>
+    </ol>
+</section>     
+   <h2>III. Anatomie des mécanismes de résistance structurelle</h2>
+
+<p>
+    Dans les économies coloniales, les marchés locaux constituent un nœud stratégique en ceci qu'ils assurent la circulation des denrées, le paiement des taxes et l'approvisionnement des garnisons. Les femmes en contrôlent massivement les flux dans une grande partie de l'Afrique subsaharienne, parce que cette position leur confère une autonomie économique que le système colonial a échoué à démanteler, faute d'avoir pris la pleine mesure de ce pouvoir qu'il jugeait, par biais patriarcal, subalterne. Cette position devient un levier de résistance dès lors que les femmes choisissent de l'activer collectivement.
+</p>
+
+<p>
+    Lorsque les marchandes de Lomé en 1933 ou celles d'Accra utilisent leur poids économique pour contester les patentes et l'impôt, elles coupent des revenus fiscaux dont l'administration coloniale dépend pour financer son fonctionnement local.<sup><a href="#fn11" id="ref11">11</a></sup> Le marché devient, au-delà d'un simple espace économique, un contre-pouvoir, précisément parce que l'administration coloniale en était l'otage économique.
+</p>
+
+<p>
+    Cette dernière a, par ailleurs, produit ses propres angles morts en appliquant ses préjugés de genre à l'organisation de la surveillance. Les femmes, jugées politiquement inoffensives, circulaient dans des zones interdites aux hommes suspects, franchissaient des barrages militaires sous couvert d'activités domestiques, et assuraient des fonctions de liaison que les réseaux masculins ne pouvaient pas remplir sans s'exposer.<sup><a href="#fn12" id="ref12">12</a></sup> Les moussebilates algériennes en fournissent l'exemple le plus documenté : agents de liaison, collectrices de fonds, hébergeuses de combattants, elles opèrent depuis leur domicile, que l'armée française ne peut soumettre à contrôle permanent sans admettre qu'elle surveille des foyers civils — ce qui contredirait le discours colonial sur la « mission civilisatrice ». Réprimer ces réseaux impliquait de rendre visible leur existence, donc d'admettre que la résistance était socialement enracinée et non limitée à quelques combattants isolés.<sup><a href="#fn13" id="ref13">13</a></sup>
+</p>
+
+<p>
+    Yaa Asantewaa, reine-mère de l'Ejisu, prend le commandement de la résistance ashanti en 1900. Son ascension survient au moment critique où les chefs masculins, paralysés par la peur, refusent de s'opposer à l'ultimatum britannique exigeant la remise du Trône d'Or — l'âme même de la nation. Au Niger, c'est la reine-sorcière et chef politique des Azna, Sarraounia Mangou, qui organise la résistance contre la colonne Voulet-Chanoine en 1899 — une expédition militaire française d'une brutalité sans précédent visant à relier le fleuve Niger au lac Tchad. Elle incarne le dernier rempart de dignité alors que les structures de pouvoir masculines environnantes ont capitulé ou fui. Ces deux cas ont en commun que le leadership féminin émerge non comme substitut symbolique, mais comme réponse fonctionnelle à une défaillance des structures de commandement masculines face à la pression coloniale.<sup><a href="#fn14" id="ref14">14</a></sup> Réponse uniquement rendue possible car les femmes possédaient une « intelligence de guerre » différente, plus horizontale, que le colon était quasiment incapable de décoder.
+</p>
+
+<p>
+    Ce basculement modifie la nature du conflit. Yaa Asantewaa transforme ce qui aurait été une reddition négociée en guerre de siège de plusieurs mois, forçant l'armée britannique à engager des renforts massifs.<sup><a href="#fn15" id="ref15">15</a></sup> Sarraounia, quant à elle, en refusant l'affrontement frontal pour une stratégie de harcèlement et de repli, impose à la colonne Voulet-Chanoine un coût opérationnel qu'elle n'avait pas anticipé. Dans les deux cas, le passage d'un affrontement frontal à une guerre sociétale est directement lié à un mode de commandement féminin qui n'obéit pas aux logiques militaires classiques que le colon sait lire et contrer.
+</p>
+
+<p>
+    Ces mécanismes — qu'ils soient économiques, logistiques ou militaires — ne sont pas des appendices de l'Histoire : ils en sont le cœur battant. En réalité, le levier financier des marchés alimentait les réseaux de l'ombre, tandis que le leadership de rupture des femmes sauvait la dignité là où les fusils s'étaient tus. Continuer à présenter ces actions comme des « contributions d'appoint » à une résistance masculine est une erreur de lecture, ou pire, un mensonge historique. C'est refuser de voir que la résistance n'était pas un acte isolé, mais un système total, une guerre sociétale dont les femmes étaient, par la force des choses, les véritables stratèges.
+</p>
+
+<section class="footnotes">
+    <ol start="11">
+        <li id="fn11">
+            Lucas, Nicole, et Ohana, Danielle. <em>Femmes à l'épreuve de la colonisation et des indépendances</em>. Paris : Éditions Le Manuscrit, 2023. <a href="#ref11" class="backlink"></a>
+        </li>
+        <li id="fn12">
+            Ibid. <a href="#ref12" class="backlink"></a>
+        </li>
+        <li id="fn13">
+            Branche, Raphaëlle. <em>La torture et l'armée pendant la guerre d'Algérie</em>. Paris : Gallimard, 2016. <a href="#ref13" class="backlink"></a>
+        </li>
+        <li id="fn14">
+            Bouilly, Emmanuelle, et Rillon, Ophélie. « Relire les décolonisations d'Afrique francophone au prisme du genre ». <em>Le Mouvement Social</em>, 2016/2, n° 255. <a href="#ref14" class="backlink"></a>
+        </li>
+        <li id="fn15">
+            Coquery-Vidrovitch, Catherine. <em>Les Africaines, Histoire des femmes d'Afrique noire, du XIXe au XXe siècle</em>. Paris : La Découverte, 2013. <a href="#ref15" class="backlink"></a>
+        </li>
+    </ol>
+</section>
+<h2>IV. L'effacement comme technologie de pouvoir</h2>
+
+<h3>L'impérialisme du savoir</h3>
+
+<p>
+    L'histoire des femmes africaines a été produite, jusqu'aux années 1970, quasi exclusivement par des sources extérieures : missionnaires, anthropologues coloniaux, administrateurs. Ces sources opèrent depuis une grille qui définit l'Africaine comme mineure permanente, incapable d'action politique autonome, assignée à des fonctions biologiques et domestiques.<sup><a href="#fn16" id="ref16">16</a></sup> Ifi Amadiume a montré que cette grille a systématiquement effacé les structures de pouvoir féminin — chefferies, titres politiques, rôles rituels — en les réinterprétant comme des fonctions symboliques sans portée réelle.<sup><a href="#fn17" id="ref17">17</a></sup> Le résultat est une histoire fabriquée, qui substitue à la réalité des sociétés africaines une projection des catégories européennes de genre sur des structures qui ne les reconnaissaient pas.
+</p>
+
+<h3>La colonialité du genre</h3>
+
+<p>
+    María Lugones a nommé ce processus « colonialité du genre » : l'imposition d'un modèle binaire eurocentrique qui ne décrit pas les sociétés colonisées mais les réorganise.<sup><a href="#fn18" id="ref18">18</a></sup> Dans l'Afrique des souverainetés*, les catégories de genre ne recoupaient pas nécessairement les catégories biologiques dans plusieurs sociétés, et les fonctions politiques n'étaient pas systématiquement distribuées selon le sexe. L'administration coloniale, en imposant des interlocuteurs masculins et en légalisant des structures patriarcales locales qu'elle contribuait parfois à créer ou renforcer, a produit une reconfiguration réelle des rapports de pouvoir au sein des sociétés africaines — avant même que l'historiographie n'en efface la trace. Cette reconfiguration ne concerne pas uniquement les institutions. Elle touche également la manière dont les sociétés colonisées se perçoivent et s'organisent. Achille Mbembe l'a formulé en termes plus larges : « la colonisation n'a pas seulement dominé des territoires, elle a réorganisé les subjectivités et les structures sociales selon ses propres besoins de gouvernement ».<sup><a href="#fn19" id="ref19">19</a></sup>
+</p>
+
+<h3>La conséquence analytique</h3>
+
+<p>
+    Effacer le rôle des femmes dans les résistances africaines produit un effet précis sur la lecture du conflit colonial : il transforme une opposition sociale totale et durable en une série de défaites militaires ponctuelles.<sup><a href="#fn20" id="ref20">20</a></sup> Une résistance réduite à ses dimensions armées est une résistance qui a perdu. C'est une lecture qui arrange le vainqueur, car elle lui permet de dater sa domination. Une résistance lue dans sa dimension sociale, économique et organisationnelle est une résistance qui a maintenu des structures de survie collective pendant des décennies, contraint l'administration coloniale à des coûts permanents et préparé les conditions politiques des indépendances.<sup><a href="#fn21" id="ref21">21</a></sup> Ce n'est pas la même histoire. Ce n'est pas le même rapport de force. Et ce n'est pas la même leçon sur la capacité organisationnelle des sociétés africaines.<sup><a href="#fn22" id="ref22">22</a></sup>
+</p>
+
+<p>
+    Toyin Falola et Adam Paddock ont montré que les mouvements de résistance les plus durables en Afrique subsaharienne sont précisément ceux qui ont intégré les femmes comme acteurs centraux — pas comme auxiliaires — parce que cela leur conférait une profondeur sociale que la répression militaire coloniale ne pouvait pas atteindre directement.<sup><a href="#fn23" id="ref23">23</a></sup> Restaurer ce rôle dans le récit historique n'est pas un geste mémoriel ou identitaire. C'est une condition pour produire une analyse correcte du rapport de forces entre les sociétés africaines et le fait colonial.
+</p>
+
+<p>
+    <em>* Dans nos articles, l'expression « Afrique des souverainetés » est utilisée pour désigner les sociétés africaines antérieures à la domination coloniale européenne. Ce choix terminologique répond à une limite des catégories « précolonial » et « postcolonial », qui définissent l'histoire africaine à partir de la colonisation européenne comme point central de périodisation.</em>
+</p>
+
+<section class="footnotes">
+    <ol start="16">
+        <li id="fn16">
+            Gautier, Arlette. « Femmes et colonialisme ». In Ferro, Marc (dir.). <em>Le livre noir du colonialisme</em>. Paris : Robert Laffont, 2004. <a href="#ref16" class="backlink"></a>
+        </li>
+        <li id="fn17">
+            Amadiume, Ifi. <em>Male Daughters, Female Husbands : Gender and Sex in an African Society</em>. Londres : Zed Books, 1987. <a href="#ref17" class="backlink"></a>
+        </li>
+        <li id="fn18">
+            Lugones, María. « Heterosexualism and the Colonial/Modern Gender System ». <em>Hypatia</em>, vol. 22, n° 1, 2007. <a href="#ref18" class="backlink"></a>
+        </li>
+        <li id="fn19">
+            Mbembe, Achille. <em>De la postcolonie : essai sur l'imagination politique dans l'Afrique contemporaine</em>. Paris : Karthala, 2000, p. 12. <a href="#ref19" class="backlink"></a>
+        </li>
+        <li id="fn20">
+            Bouilly, Emmanuelle, et Rillon, Ophélie. « Relire les décolonisations d'Afrique francophone au prisme du genre ». <em>Le Mouvement Social</em>, 2016/2, n° 255. <a href="#ref20" class="backlink"></a>
+        </li>
+        <li id="fn21">
+            Falola, Toyin, et Paddock, Adam. <em>The Women's War of 1929 : A History of Anti-Colonial Resistance in Eastern Nigeria</em>. Durham : Carolina Academic Press, 2011. <a href="#ref21" class="backlink"></a>
+        </li>
+        <li id="fn22">
+            Coquery-Vidrovitch, Catherine. <em>Les Africaines, Histoire des femmes d'Afrique noire, du XIXe au XXe siècle</em>. Paris : La Découverte, 2013. <a href="#ref22" class="backlink"></a>
+        </li>
+        <li id="fn23">
+            Falola, Toyin, et Paddock, Adam. <em>The Women's War of 1929</em>, op. cit. <a href="#ref23" class="backlink"></a>
+        </li>
+    </ol>
+</section>
+            <style>
+  /* ============================================================
+     SANKU KAMÂ — NOTRE LECTURE
+     Partie V : Rupture éditoriale — Note d'analyse de terrain
+  ============================================================ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Public+Sans:wght@300;400;600&display=swap');
+
+  :root {
+    /* --- Annulation de la lettrine UNIQUEMENT sur le texte du warning --- */
+  .notre-lecture .prisme-warning p::first-letter {
+    font-family: 'Public Sans', sans-serif !important;
+    font-size: 0.65rem !important;
+    float: none !important;
+    margin-right: 0 !important;
+    line-height: 1.5 !important;
+    color: var(--mauve-logo) !important;
+  }
+
+  .notre-lecture {
+    background-color: var(--fond-analyse);
+    border: 1px solid color-mix(in srgb, var(--mauve-logo) 35%, transparent);
+    padding: 3rem 3.5rem 3.5rem;
+    margin: 3.5rem 0;
+    position: relative;
+    font-family: 'Lora', serif;
+  }
+
+  /* --- Bandeau Warning --- */
+  .notre-lecture .prisme-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--mauve-logo) 20%, transparent);
+    opacity: 0.6;
+  }
+
+  .notre-lecture .prisme-warning .prisme-icon {
+    font-size: 0.75rem;
+    color: var(--mauve-logo);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  /* Icône œil barré en SVG inline */
+  .notre-lecture .prisme-warning svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--mauve-logo);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .notre-lecture .prisme-warning p {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mauve-logo);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .notre-lecture .prisme-warning p strong {
+    font-weight: 600;
+  }
+
+  /* --- Titre --- */
+  .notre-lecture h2 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mauve-logo);
+    margin: 0 0 2rem 0;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  /* --- Corps du texte --- */
+  .notre-lecture p {
+    font-family: 'Lora', serif;
+    font-size: 0.925rem;
+    line-height: 1.85;
+    color: var(--texte-principal);
+    margin-bottom: 1.4rem;
+    font-weight: 400;
+  }
+
+  .notre-lecture p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* --- Italique --- */
+  .notre-lecture em {
+    font-style: italic;
+    color: #a0a0a0;
+  }
+
+  /* --- Guillemets mis en exergue --- */
+  .notre-lecture .exergue {
+    border-left: 2px solid color-mix(in srgb, var(--mauve-logo) 50%, transparent);
+    padding-left: 1.25rem;
+    margin: 1.75rem 0;
+    font-style: italic;
+    color: #aaaaaa;
+  }
+
+  /* --- Responsive mobile --- */
+  @media (max-width: 768px) {
+    .notre-lecture {
+      padding: 2.25rem 1.5rem 2.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .notre-lecture .prisme-warning p {
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+    }
+
+    .notre-lecture h2 {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+    }
+
+    .notre-lecture p {
+      font-size: 0.875rem;
+    }
+  }
+</style>
+
+<div class="notre-lecture">
+
+  <!-- BANDEAU AVERTISSEMENT -->
+  <div class="prisme-warning">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <!-- Œil -->
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+      <circle cx="12" cy="12" r="3"/>
+      <!-- Barre diagonale -->
+      <line x1="3" y1="3" x2="21" y2="21"/>
+    </svg>
+    <p><strong>Prisme Sanku Kamâ —</strong> Cette section livre notre grille de lecture et notre analyse critique des faits présentés ci-dessus.</p>
+  </div>
+
+  <!-- TITRE -->
+  <h2>V. Notre lecture chez Sanku Kama</h2>
+
+  <!-- CORPS -->
+  <p>
+    L'histoire africaine a ses généraux, ses trafiquants, ses présidents incompétents et ses diplomates hypocrites. Les livres d'histoire ont retenu leurs noms et continueront de le faire — que cela soit vérité ou non. Dans cette mise en récit, les femmes apparaissent souvent — trop souvent — à la périphérie. Épouses de combattants, mères de martyrs, présence secondaire dans une guerre qui aurait été menée par d'autres. Pourtant, plus l'on regarde les structures réelles de nos résistances, plus cette grille de lecture nous apparaît réellement pour ce qu'elle est. Vide de sens.
+  </p>
+
+  <p>
+    Car derrière les armées, il existait une architecture sans laquelle aucune résistance durable n'aurait pu survivre. Et le visage de cette architecture était féminin — n'en déplaise à l'ego de certains. En réduisant la résistance africaine à sa seule face masculine, on accepte l'idée que nous avons été « vaincus » dès lors que les fusils se sont tus. On accepte de dater notre domination à partir de la chute des derniers bastions militaires.
+  </p>
+
+  <p>
+    Nous, chez Sanku Kama, voyons autre chose, que l'hypocrisie et la mauvaise foi de nos élites les empêchent de voir. Nous voyons que le projet colonial n'a jamais réussi à dompter la profondeur sociale de nos empires. Tant que les femmes contrôlaient les marchés, tant qu'elles assuraient les liaisons, tant qu'elles maintenaient une économie que le colon ne pouvait qu'observer avec impuissance, la souveraineté africaine n'était pas morte : elle était diffuse. Notre souveraineté était partout, partout où l'œil étriqué et stéréotypé du colon ne savait pas regarder.
+  </p>
+
+  <p>
+    Au-delà d'être politique, le drame des indépendances est également épistémologique. Les nouvelles élites ont non seulement récupéré les clés de l'administration coloniale, mais leur ont — apparemment — volé leurs lunettes de vue. Elles ont maintenu cette « colonialité du genre » parce qu'elle leur servait de garde-fou. Pour régner, il fallait transformer la femme africaine. Il fallait la faire passer d'actrice politique, de stratège, d'autorité rituelle, à une vulgaire « vitrine » à protéger ou à domestiquer.
+  </p>
+
+  <div class="exergue">
+    Dire à une femme de « retourner à son couscous » est — au-delà d'être profondément sexiste et démonstratif d'une certaine petitesse d'esprit — un acte de contre-révolution à part entière. C'est démanteler le système de résistance totale qui a rendu l'indépendance possible pour le remplacer par une hiérarchie verticale, facile à contrôler, et plus facile à corrompre — même s'il ne nécessite pas énormément d'effort pour pousser nos élites actuelles à piquer dans les caisses.
+  </div>
+
+  <p>
+    Nous devons sortir de ce que Maria Lugones appelle le modèle binaire eurocentré. Cette sottise continue de nous faire croire que la politique ne se passait — et ne se passe — que dans les palais et les « parle-et-ments ». Mensonge ! Ce refus dédaigneux de reconnaître le rôle structurel des femmes dans nos résistances n'est rien d'autre qu'une minable technologie de maintien du statu quo. Si l'on admet que les femmes ont été des stratèges, on doit admettre que le pouvoir actuel n'est qu'une fraction de ce que devrait être notre souveraineté. On doit admettre que nous avons amputé une bonne partie de notre capacité organisationnelle au profit d'un leadership masculin qui, trop souvent, ne sait plus que singer son ancien maître. Et autant dire que ça en ferait craquer le costume de plus d'un de nos politicards.
+  </p>
+
+  <p>
+    Restaurer ce rôle dans notre récit, dans notre histoire, va au-delà du simple sentimentalisme comme certains archétypes du nègre de maison veulent bien nous le faire croire. C'est une nécessité vitale pour comprendre que notre force à l'époque n'a jamais résidé dans notre capacité à copier les armées européennes — ou quoi que ce soit d'européen d'ailleurs — mais dans notre capacité à rendre nos sociétés ingouvernables pour quiconque voulait les piller. La souveraineté de demain ne se construira pas sur les ruines du patriarcat colonial. La souveraineté ne réside pas juste dans l'économie ou dans la guerre, même si cela peut être le cas outre méditerranée. Nous estimons, nous, avoir passé le cap où l'« Homme » ne se définit que par sa capacité à « taper plus fort » que le voisin. Restaurer la grandeur de nos femmes fait partie de ces pierres-là qui nous permettront, à terme, d'ériger le mur d'une réelle souveraineté.
+  </p>
+
+  <p>
+    Chez Sanku Kama, nous ne cherchons pas juste à rajouter des noms dans les marges de l'histoire coloniale. Sinon, cet article aurait pu prendre la forme d'une banale « liste de femmes qui se sont battues ». Nous cherchons à brûler la marge pour réécrire mille pages. Car tant que nous ne verrons pas les femmes comme les architectes de notre résilience, nous resterons condamnés à lire notre histoire avec les yeux de ceux qui ont tout fait pour crever les nôtres.
+  </p>
+
+</div>
+        </article>
+        <style>
+  /* ============================================================
+     SANKU KAMÂ — BIBLIOGRAPHIE
+     Les femmes africaines dans les résistances coloniales
+  ============================================================ */
+
+  .biblio-femmes {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    padding: 4rem 3.5rem;
+    margin-top: 4rem;
+    border-top: 1px solid #1f1f1f;
+    color: #b0b0b0;
+  }
+
+  .biblio-femmes h3 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #C7ABFF;
+    margin: 0 0 2.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #1f1f1f;
+  }
+
+  .biblio-femmes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Indentation suspendue */
+  .biblio-femmes li {
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+    margin-bottom: 0.9rem;
+    color: #888;
+  }
+
+  .biblio-femmes em {
+    font-style: italic;
+    color: #999;
+  }
+
+  @media (max-width: 768px) {
+    .biblio-femmes {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>
+
+<section class="biblio-femmes">
+
+  <h3>Références &amp; Sources</h3>
+
+  <ul>
+    <li>Amadiume, Ifi. <em>Male Daughters, Female Husbands : Gender and Sex in an African Society</em>. Londres : Zed Books, 1987.</li>
+
+    <li>Bouilly, Emmanuelle, et Rillon, Ophélie. « Relire les décolonisations d'Afrique francophone au prisme du genre ». <em>Le Mouvement Social</em>, 2016/2, n° 255.</li>
+
+    <li>Branche, Raphaëlle. <em>La torture et l'armée pendant la guerre d'Algérie</em>. Paris : Gallimard, 2016.</li>
+
+    <li>Coquery-Vidrovitch, Catherine. <em>Les Africaines, Histoire des femmes d'Afrique noire, du XIXe au XXe siècle</em>. Paris : La Découverte, 2013.</li>
+
+    <li>Falola, Toyin, et Paddock, Adam. <em>The Women's War of 1929 : A History of Anti-Colonial Resistance in Eastern Nigeria</em>. Durham : Carolina Academic Press, 2011.</li>
+
+    <li>Gautier, Arlette. « Femmes et colonialisme ». In Ferro, Marc (dir.). <em>Le livre noir du colonialisme</em>. Paris : Robert Laffont, 2004.</li>
+
+    <li>Hugon, Anne (dir.). <em>Histoire des femmes en situation coloniale, Afrique et Asie, XXe siècle</em>. Paris : Karthala, 2004.</li>
+
+    <li>Lucas, Nicole, et Ohana, Danielle. <em>Femmes à l'épreuve de la colonisation et des indépendances</em>. Paris : Éditions Le Manuscrit, 2023.</li>
+
+    <li>Lugones, María. « Heterosexualism and the Colonial/Modern Gender System ». <em>Hypatia</em>, vol. 22, n° 1, 2007.</li>
+
+    <li>Mbembe, Achille. <em>De la postcolonie : essai sur l'imagination politique dans l'Afrique contemporaine</em>. Paris : Karthala, 2000.</li>
+
+    <li>Savineau, Denise. <em>La famille en Afrique Occidentale Française et la condition de la femme</em>. Rapport présenté au Gouverneur général de l'AOF, Dakar, 1938.</li>
+
+    <li>Van Allen, Judith. « Aba Riots » or Igbo « Women's War »? Ideology, Stratification, and the Invisibility of Women. 1976.</li>
+  </ul>
+
+</section>
+    </main>
+
+    <footer>
+        <p>© SANKU KAMÂ. Tous droits réservés.</p>
+        <div class="socials">
+            <a href="https://www.instagram.com/sanku.kama" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@sanku.kama" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/company/sanku-kama/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1200, once: true });</script>
+</body>
+</html>
