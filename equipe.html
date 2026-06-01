@@ -15,36 +15,53 @@
             --gold-brushed: #B8960C;
             --mauve-logo: #C7ABFF;
             --text-ivory: #F2E8D9;
-            --transition-smooth: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+            --transition-smooth: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { background-color: var(--bg-deep); color: var(--text-ivory); font-family: 'Lora', serif; overflow-x: hidden; line-height: 1.8; position: relative; }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION CENTRALISÉE ET HOMOGÈNE --- */
         nav {
-            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; 
-            align-items: center; padding: 20px 5%; z-index: 1000;
-            background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent);
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            padding: 20px 5%; 
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(13,13,13,0.98), rgba(13,13,13,0.85), transparent);
         }
-        .logo-img { height: 45px; animation: logoAppear 2s ease-out forwards; }
+        .logo-img { height: 45px; animation: logoAppear 2s ease-out forwards; margin-bottom: 15px; }
         @keyframes logoAppear { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
 
-        .nav-links { display: flex; gap: 20px; }
+        .nav-links { display: flex; gap: 20px; justify-content: center; }
         .nav-links a {
-            text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
-            text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; transition: var(--transition-smooth);
+            text-decoration: none; 
+            color: var(--gold-brushed); 
+            font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-size: 0.7rem; 
+            font-weight: 800;
+            transition: var(--transition-smooth);
         }
-        .nav-links a:hover { color: var(--mauve-logo); text-shadow: 0 0 10px var(--mauve-logo); }
+        .nav-links a:hover { 
+            color: var(--mauve-logo); 
+            text-shadow: 0 0 10px rgba(199, 171, 255, 0.8);
+        }
 
         /* --- FILIGRANES GÉO --- */
         .geo-filigrane {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 80vw; height: 80vh;
+            width: 70vw; height: 70vh;
             background-size: contain; background-repeat: no-repeat; background-position: center;
-            opacity: 0.25; z-index: -1; pointer-events: none;
+            opacity: 0.12; z-index: -1; pointer-events: none;
             filter: invert(80%) sepia(50%) saturate(2000%) hue-rotate(10deg) brightness(100%);
         }
 
@@ -57,34 +74,26 @@
         }
 
         /* --- TEAM SECTIONS --- */
-        .team-container { max-width: 1300px; margin: 0 auto; }
-        .team-section { padding: 80px 10%; position: relative; }
+        .team-container { max-width: 850px; margin: 0 auto; }
+        .team-section { padding: 80px 5%; position: relative; text-align: center; }
 
-        .member-card { display: grid; grid-template-columns: 350px 1fr; gap: 60px; align-items: start; }
-        
-        /* CLASSE POUR INVERSER LE SENS (NADIA) */
-        .member-reversed { grid-template-columns: 1fr 350px; text-align: right; }
-        .member-reversed .member-photo-frame { order: 2; } /* Photo à droite */
-        .member-reversed .member-info { order: 1; } /* Texte à gauche */
-        .member-reversed .quote-highlight { border-left: none; border-right: 2px solid var(--mauve-logo); padding-left: 0; padding-right: 15px; }
-
-        .member-photo-frame {
-            position: relative; border: 1px solid var(--gold-brushed); padding: 15px;
-            background: rgba(13, 13, 13, 0.8); z-index: 2;
-        }
-        .member-photo { width: 100%; height: 450px; object-fit: cover; filter: grayscale(1); transition: var(--transition-smooth); }
-        .member-photo-frame:hover { border-color: var(--mauve-logo); box-shadow: 0 0 30px rgba(199, 171, 255, 0.1); }
-
-        .member-info h2 { font-family: 'Cinzel', serif; color: var(--gold-brushed); font-size: 2.2rem; }
-        .member-role { font-family: 'Public Sans', sans-serif; text-transform: uppercase; letter-spacing: 3px; color: var(--mauve-logo); font-size: 0.9rem; margin-bottom: 30px; display: block; }
+        .member-info h2 { font-family: 'Cinzel', serif; color: var(--gold-brushed); font-size: 2.2rem; letter-spacing: 1px; }
+        .member-role { font-family: 'Public Sans', sans-serif; text-transform: uppercase; letter-spacing: 3px; color: var(--mauve-logo); font-size: 0.9rem; margin-bottom: 40px; display: block; }
 
         [data-aos="ink"] { opacity: 0; filter: blur(10px); transition: 1.5s; }
         [data-aos="ink"].aos-animate { opacity: 1; filter: blur(0); }
 
-        .member-bio p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(242, 232, 217, 0.9); text-align: justify; }
-        .member-reversed .member-bio p { text-align: right; }
-
-        .quote-highlight { color: var(--gold-brushed); font-weight: 600; border-left: 2px solid var(--mauve-logo); padding-left: 15px; }
+        .member-bio p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(242, 232, 217, 0.9); text-align: justify; text-justify: inter-word; }
+        
+        .quote-highlight { 
+            color: var(--gold-brushed); 
+            font-weight: 600; 
+            border-top: 1px solid rgba(199, 171, 255, 0.2); 
+            border-bottom: 1px solid rgba(199, 171, 255, 0.2); 
+            padding: 20px 0; 
+            margin-top: 35px;
+            font-style: italic;
+        }
 
         /* --- SECTION ET VOUS --- */
         .community-section {
@@ -94,28 +103,32 @@
         
         #africa-pattern {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 80vw; height: 80vh;
+            width: 70vw; height: 70vh;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Africa-outline.svg');
             background-size: contain; background-repeat: no-repeat; background-position: center;
-            opacity: 0.3; z-index: -1; pointer-events: none;
+            opacity: 0.12; z-index: -1; pointer-events: none;
             filter: invert(80%) sepia(50%) saturate(2000%) hue-rotate(10deg) brightness(100%);
         }
 
         /* --- MOBILE ADAPTATION --- */
         @media (max-width: 768px) {
-            nav { flex-direction: column; padding: 15px; align-items: center; }
-            .nav-links { margin-top: 15px; gap: 8px; flex-wrap: wrap; justify-content: center; }
-            .nav-links a { font-size: 0.65rem; padding: 5px 8px; border: 1px solid rgba(184, 150, 12, 0.1); }
-            header { padding-top: 120px; }
-            .member-card, .member-reversed { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .member-reversed .member-photo-frame { order: 0; }
-            .member-photo-frame { max-width: 320px; margin: 0 auto; }
-            .member-bio p, .member-reversed .member-bio p { text-align: center; }
-            .quote-highlight, .member-reversed .quote-highlight { border-left: none; border-right: none; border-top: 1px solid var(--mauve-logo); padding: 15px 0 0 0; }
+            nav { padding: 15px 5%; }
+            .logo-img { height: 35px; margin-bottom: 10px; }
+            .nav-links { gap: 12px; flex-wrap: wrap; }
+            .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; }
+            
+            header { padding-top: 140px; }
+            .team-section { padding: 50px 5%; }
+            .member-bio p { text-align: center; font-size: 1rem; }
+            
+            .community-section { padding: 80px 6%; }
+            .community-section p { font-size: 1rem; }
         }
 
-        footer { padding: 40px 5%; text-align: center; border-top: 1px solid rgba(184, 150, 12, 0.1); }
-        .socials a { color: var(--gold-brushed); font-size: 1.2rem; margin: 0 15px; }
+        footer { padding: 50px 5%; border-top: 1px solid rgba(184, 150, 12, 0.1); text-align: center; }
+        .socials { margin-top: 25px; }
+        .socials a { color: var(--gold-brushed); font-size: 1.3rem; margin: 0 15px; transition: 0.3s; }
+        .socials a:hover { color: var(--mauve-logo); }
 
         @keyframes textInk { from { opacity: 0; filter: blur(20px); } to { opacity: 1; filter: blur(0); } }
     </style>
@@ -140,41 +153,35 @@
 
     <div class="team-container">
         
+        <!-- YOHANN -->
         <section class="team-section">
             <div class="geo-filigrane" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/23/Outline_of_Ivory_Coast.svg');"></div>
-            <div class="member-card">
-                <div class="member-photo-frame" data-aos="fade-right">
-                    <div class="member-photo" style="background: url('photo-yohann.jpg') center/cover;"></div>
-                </div>
-                <div class="member-info">
-                    <h2 data-aos="fade-left">Yohann-André Irie</h2>
-                    <span class="member-role" data-aos="fade-left" data-aos-delay="200">Fondateur · Rédacteur</span>
-                    <div class="member-bio">
-                        <p data-aos="ink">Je suis ivoirien, j'ai 23 ans, et j'étudie les relations internationales.</p>
-                        <p data-aos="ink" data-aos-delay="200">J'ai longtemps aimé mon pays comme on aime sa famille, sans avoir besoin de l'expliquer. Puis j'ai rencontré des Russes, des Serbes, des Azerbaïdjanais, des gens qui portaient leur pays avec une histoire, une mémoire, une véritable culture.</p>
-                        <p data-aos="ink" data-aos-delay="400">Et je me suis rendu compte d'un truc simple : à deux ans d'entrer dans le monde professionnel, je ne savais presque rien de l'histoire de mon propre continent. Et surtout, que ce que je savais était biaisé.</p>
-                        <p class="quote-highlight" data-aos="ink" data-aos-delay="600">L'objectif est simple : mieux comprendre, pour mieux transmettre. Parce que l'âme de Sanku Kama se résume à ça : rétablir la mémoire de l'Afrique, rétablir notre mémoire.</p>
-                    </div>
+            <div class="member-info">
+                <h2 data-aos="fade-up">Yohann-André Irie</h2>
+                <span class="member-role" data-aos="fade-up" data-aos-delay="200">Fondateur · Rédacteur</span>
+                <div class="member-bio">
+                    <p data-aos="ink">Je suis ivoirien, j'ai 23 ans, et j'étudie les relations internationales.</p>
+                    <p data-aos="ink" data-aos-delay="100">J'ai longtemps aimé mon pays comme on aime sa famille, sans avoir besoin de l'expliquer. Puis j'ai rencontré des Russes, des Serbes, des Azerbaïdjanais. Des gens qui portaient leur pays avec une histoire, une mémoire, une véritable culture. Et je me suis rendu compte d'un truc simple : à deux ans d'entrer dans le monde professionnel, je ne savais presque rien de l'histoire de mon propre continent. Et surtout, que ce que je savais était biaisé. Je le sentais sans forcément pouvoir le démontrer.</p>
+                    <p data-aos="ink" data-aos-delay="200">J'ai donc commencé à chercher par moi-même. Et très vite, je me suis rendu compte que beaucoup de choses ne tenaient pas. Des périodes entières étaient survolées, certains événements étaient présentés sans contexte, et surtout, les liens entre passé et présent n'étaient presque jamais faits. J'ai compris que le problème n'était pas seulement le manque d'information, mais la manière dont l'histoire nous était transmise.</p>
+                    <p data-aos="ink" data-aos-delay="300">Aujourd'hui, je travaille à l'intersection de la pensée politique, de la souveraineté africaine et de l'action publique. Je m'intéresse aux institutions, aux dynamiques de pouvoir et aux trajectoires historiques des États africains, avec une attention particulière portée aux continuités entre passé et présent. Mon objectif est de produire des analyses rigoureuses, capables de dépasser les lectures simplifiées et d'apporter une compréhension plus solide des réalités africaines.</p>
+                    <p data-aos="ink" data-aos-delay="400">Sanku Kama s'inscrit dans cette démarche. J'en suis à l'initiative et j'en assure la direction. J'en définis la ligne, la cohérence et les orientations. Je participe également à la rédaction des contenus, avec une exigence qui est de travailler à partir de sources fiables, croiser les points de vue, et proposer des analyses construites.</p>
+                    <p class="quote-highlight" data-aos="ink" data-aos-delay="500">L'objectif est simple : mieux comprendre, pour mieux transmettre. Parce que l'âme de notre projet se résume à ça : rétablir la mémoire de l'Afrique, rétablir notre mémoire.</p>
                 </div>
             </div>
         </section>
 
+        <!-- NADIA -->
         <section class="team-section">
             <div class="geo-filigrane" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ea/Outline_of_Guinea.svg');"></div>
-            <div class="member-card member-reversed">
-                <div class="member-photo-frame" data-aos="fade-left">
-                    <div class="member-photo" style="background: url('photo-nadia.jpg') center/cover;"></div>
-                </div>
-                <div class="member-info">
-                    <h2 data-aos="fade-right">Nadia Ayoub</h2>
-                    <span class="member-role" data-aos="fade-right" data-aos-delay="200">Communication · Créatrice de contenu</span>
-                    <div class="member-bio">
-                        <p data-aos="ink">J'ai 22 ans, je suis étudiante en marketing et vente. Curieuse de nature, passionnée de création digitale, j'ai rejoint Sanku Kama pour une démarche personnelle forte.</p>
-                        <p data-aos="ink" data-aos-delay="200">Je suis d'origine guinéenne et libanaise. Aujourd'hui, je ne parle pas mes langues natales, je ne connais pas mes cultures, et cela crée en moi à la fois un manque et une réelle curiosité.</p>
-                        <p data-aos="ink" data-aos-delay="400">Rejoindre Sanku Kama est donc pour moi une démarche de reconnexion : apprendre et remettre en valeur les cultures ouest-africaines.</p>
-                        <p data-aos="ink" data-aos-delay="600">Mon regard est aussi celui de quelqu'un qui découvre, ce qui me permet d'aborder les contenus avec une sensibilité différente.</p>
-                        <p class="quote-highlight" data-aos="ink" data-aos-delay="800">Pour moi, ce projet est un espace de transmission, de reconnaissance et de valorisation culturelle, auquel je suis fière de contribuer.</p>
-                    </div>
+            <div class="member-info">
+                <h2 data-aos="fade-up">Nadia Ayoub</h2>
+                <span class="member-role" data-aos="fade-up" data-aos-delay="200">Communication · Créatrice de contenu</span>
+                <div class="member-bio">
+                    <p data-aos="ink">J'ai 22 ans et je suis étudiante en marketing et vente. Curieuse de nature, j'aime découvrir et expérimenter de nouvelles choses. Passionnée de création digitale et de design, j'ai d'abord évolué dans l'univers des cosmétiques, avant de rejoindre le projet SANKU KÂMA, une aventure qui m'a poussé à sortir de ma zone de confort.</p>
+                    <p data-aos="ink" data-aos-delay="100">Je suis d'origine guinéenne et libanaise, et j'ai grandi en Guinée. Pourtant, je n'ai pas eu une éducation profondément ancrée dans la culture guinéenne. Aujourd'hui, je ne parle pas ma langue natale, et cela crée en moi à la fois un manque et une réelle curiosité. Ayant grandi entre deux cultures, j'ai été davantage influencée par celle de mon père, ce qui m'a éloignée d'une partie de mes racines.</p>
+                    <p data-aos="ink" data-aos-delay="200">Rejoindre SANKU KÂMA est donc pour moi une démarche personnelle forte : apprendre, me reconnecter à mon histoire et remettre en valeur les cultures ouest africaines, une richesse, que je voudrais transmettre comme un véritable héritage.</p>
+                    <p data-aos="ink" data-aos-delay="300">À travers mon rôle, je souhaite apporter une vision créative et accessible, en mettant en valeur chaque sujet de manière impactante, pour toucher et éveiller le public. Mon regard est aussi celui de quelqu'un qui découvre, ce qui me permet d'aborder les contenus avec une sensibilité différente.</p>
+                    <p class="quote-highlight" data-aos="ink" data-aos-delay="400">Pour moi, ce projet est un espace de transmission, de reconnaissance et de valorisation culturelle, auquel je suis fière de contribuer.</p>
                 </div>
             </div>
         </section>
@@ -199,7 +206,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1500, once: true });
+        AOS.init({ duration: 1000, once: true });
 
         window.addEventListener('scroll', () => {
             const scroll = window.pageYOffset;
@@ -211,4 +218,3 @@
     </script>
 </body>
 </html>
-```
