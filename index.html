@@ -36,6 +36,7 @@
             text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
             text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; transition: var(--transition-smooth);
         }
+        .nav-links a:hover { color: var(--mauve-logo); text-shadow: 0 0 10px var(--mauve-logo); }
 
         /* --- HERO --- */
         .hero {
@@ -99,14 +100,32 @@
         }
         .cta:hover { background: var(--gold-brushed); color: var(--bg-deep); }
 
-        /* --- MOBILE ADAPTATION --- */
+        /* --- MOBILE ADAPTATION REVISITÉE --- */
         @media (max-width: 768px) {
-            nav { flex-direction: column; padding: 15px; }
-            .nav-links { margin-top: 15px; gap: 8px; flex-wrap: wrap; justify-content: center; }
-            .nav-links a { font-size: 0.6rem; padding: 5px 8px; border: 1px solid rgba(184, 150, 12, 0.1); }
-            section { padding: 60px 6%; }
-            .hero { padding-top: 80px; }
-            .action-text-main { font-size: 1.15rem; }
+            nav { 
+                flex-direction: row; 
+                padding: 15px 5%; 
+                background: rgba(13, 13, 13, 0.98);
+                box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            }
+            .logo-img { height: 35px; }
+            .nav-links { margin-top: 0; gap: 12px; }
+            .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; padding: 0; border: none; }
+            
+            section { padding: 50px 6%; }
+            .hero { padding: 0 6% 0; }
+            .hero p { font-size: 1.3rem; line-height: 1.6; }
+            
+            .grid-concept { gap: 40px; }
+            .problem-container { padding: 30px 20px; margin: 50px 0; }
+            
+            .action-container { margin: 60px 0; padding-top: 40px; }
+            .action-text-main { font-size: 1.1rem; line-height: 1.6; }
+            .action-text-sub { font-size: 0.95rem; line-height: 1.6; }
+            
+            .discovery-title { font-size: 1rem; letter-spacing: 4px; margin-bottom: 40px; }
+            .investigation-card { padding: 40px 20px; }
+            .cta { width: 100%; padding: 15px 20px; text-align: center; }
         }
 
         footer { padding: 50px 5%; border-top: 1px solid rgba(184, 150, 12, 0.1); text-align: center; }
@@ -122,7 +141,7 @@
             <img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img">
         </a>
         <div class="nav-links">
-            <a href="index.html">Accueil</a>
+            <a href="index.html" style="color: var(--mauve-logo);">Accueil</a>
             <a href="articles.html">Articles</a>
             <a href="equipe.html">L'Équipe</a>
             <a href="contact.html">Contact</a>
@@ -190,7 +209,7 @@
         <div class="socials">
             <a href="https://www.instagram.com/sanku.kama" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.tiktok.com/@sanku.kama" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.linkedin.com/company/sanku-kama/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/company/sanku-kama/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </footer>
 
