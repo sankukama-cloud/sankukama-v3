@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,11 +15,11 @@
             --gold-brushed: #B8960C;
             --bg-deep: #0d0d0d;
             --text-ivory: #F2E8D9;
-            --transition-prestige: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            --transition-prestige: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        html { scroll-behavior: smooth; }
         body { 
             background-color: var(--bg-deep); 
             color: var(--text-ivory); 
@@ -55,24 +54,35 @@
             100% { transform: translateY(-20vh) translateX(-20px) rotate(360deg); opacity: 0; }
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION CENTRALISÉE ET HOMOGÈNE --- */
         nav {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100px;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 5%; z-index: 2000;
-            background: linear-gradient(to bottom, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+            top: 0; left: 0; width: 100%;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            padding: 20px 5%; 
+            z-index: 2000;
+            background: linear-gradient(to bottom, rgba(13,13,13,0.98), rgba(13,13,13,0.85), transparent);
         }
 
-        .nav-logo-wrapper { flex: 0 1 auto; }
-        .logo-img { height: 45px; display: block; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .logo-img { height: 45px; display: block; margin-bottom: 15px; }
+        .nav-links { display: flex; gap: 20px; list-style: none; justify-content: center; }
         .nav-links a { 
-            text-decoration: none; color: var(--gold-brushed); font-family: 'Public Sans', sans-serif;
-            text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; font-weight: 800;
+            text-decoration: none; 
+            color: var(--gold-brushed); 
+            font-family: 'Public Sans', sans-serif;
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-size: 0.7rem; 
+            font-weight: 800;
             transition: var(--transition-prestige);
         }
-        .nav-links a:hover { color: var(--mauve-logo); text-shadow: 0 0 10px var(--mauve-logo); }
+        .nav-links a:hover { 
+            color: var(--mauve-logo); 
+            text-shadow: 0 0 10px rgba(199, 171, 255, 0.8); 
+        }
 
         /* --- CONTENU --- */
         .container { 
@@ -89,13 +99,13 @@
         .contact-header h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold-brushed); letter-spacing: 5px; }
         .contact-header p { font-style: italic; font-size: 1.4rem; color: var(--mauve-logo); opacity: 0.8; }
 
-        /* --- SECTION ENVELOPPE & INFOS (CORRIGÉE) --- */
+        /* --- SECTION ENVELOPPE & INFOS --- */
         .envelope-section { 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             gap: 30px; 
-            text-align: center; /* Centre tout le contenu textuel */
+            text-align: center;
         }
 
         .envelope-card {
@@ -111,7 +121,6 @@
         }
         .wax-seal i { color: rgba(13,13,13,0.8); font-size: 2.2rem; }
 
-        /* Style des écritures corrigé */
         .info-card h3 { 
             font-family: 'Public Sans', sans-serif; 
             color: var(--gold-brushed); 
@@ -164,12 +173,16 @@
 
         /* --- FOOTER --- */
         footer { padding: 50px 10%; border-top: 1px solid rgba(184, 150, 12, 0.1); text-align: center; }
-        footer p { color: var(--gold-brushed); font-family: 'Cinzel', serif; font-size: 0.75rem; opacity: 0.6; }
+        footer p { color: var(--gold-brushed); font-family: 'Cinzel', serif; font-size: 0.75rem; opacity: 0.6; letter-spacing: 2px; }
 
         @media (max-width: 900px) {
-            nav { flex-direction: column !important; height: auto; padding: 20px 0; }
+            nav { padding: 15px 5%; }
+            .logo-img { height: 35px; margin-bottom: 10px; }
+            .nav-links { gap: 12px; flex-wrap: wrap; }
+            .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; }
+
             .container { margin-top: 160px; }
-            .contact-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 50px; }
             .form-container { padding: 40px 20px; border: none; border-top: 1px solid rgba(184, 150, 12, 0.1); }
         }
     </style>
@@ -188,11 +201,9 @@
     </div>
 
     <nav>
-        <div class="nav-logo-wrapper">
-            <a href="index.html">
-                <img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img">
-            </a>
-        </div>
+        <a href="index.html">
+            <img src="logo princiapl mauve (2).png" alt="Sanku Kamâ" class="logo-img">
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="articles.html">Articles</a></li>
@@ -271,7 +282,6 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1500, once: true });</script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
 </body>
 </html>
-```
