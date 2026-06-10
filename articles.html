@@ -56,7 +56,7 @@
             max-width: 1200px; margin: 0 auto 80px;
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px; padding: 0 5%;
+            gap: 40px; padding: 0 5%;
             flex: 1;
         }
 
@@ -67,6 +67,11 @@
             color: inherit;
             cursor: pointer;
             display: block;
+        }
+
+        /* Style spécifique pour le dossier désactivé */
+        .folder-wrapper.coming-soon {
+            cursor: default;
         }
 
         .folder-container {
@@ -101,7 +106,7 @@
 
         .folder-image {
             position: absolute;
-            top: 20px; left: 20px; right: 20px; bottom: 80px; /* Réduit le décalage bas pour agrandir l'image */
+            top: 20px; left: 20px; right: 20px; bottom: 140px;
             background-size: cover;
             background-position: center;
             filter: grayscale(1) brightness(0.4);
@@ -109,14 +114,12 @@
             border: 1px solid rgba(184, 150, 12, 0.1);
         }
 
-        /* Nouveau style pour les titres sous les dossiers */
-        .external-folder-title {
+        .folder-title {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.1rem, 4vw, 1.25rem);
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
             color: var(--gold-brushed);
-            margin-top: 15px;
-            line-height: 1.4;
-            transition: color 0.4s ease;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
 
         /* Couverture du dossier */
@@ -167,11 +170,6 @@
             opacity: 0.8;
         }
 
-        /* Changement de couleur du titre externe au survol du dossier */
-        .folder-wrapper:hover .external-folder-title {
-            color: var(--mauve-logo);
-        }
-
         /* --- MOBILE ADAPTATION --- */
         @media (max-width: 768px) {
             nav { padding: 15px 3%; flex-direction: column; gap: 10px; }
@@ -183,7 +181,7 @@
             .articles-grid { 
                 grid-template-columns: 1fr; 
                 padding: 0 8%;
-                gap: 60px; /* Légèrement augmenté pour l'espace des titres */
+                gap: 50px;
             }
 
             .folder-container { height: 400px; }
@@ -244,17 +242,17 @@
 
     <main class="articles-grid">
 
-        <a href="article-angolagate.html" class="folder-wrapper" data-aos="fade-up">
+        <div class="folder-wrapper coming-soon" data-aos="fade-up">
             <div class="folder-container">
                 <div class="folder-tab"></div>
                 <div class="folder-cover"></div>
                 <div class="folder-content">
                     <div class="folder-image" style="background-image: url('Photo_Angolagate.png');"></div>
-                    <p style="font-size: 0.85rem; color: var(--text-ivory); opacity: 0.7;">Analyse d'un système de corruption et de guerre.</p>
+                    <h2 class="folder-title" style="color: var(--mauve-logo);">[ COMING SOON ]</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-ivory); opacity: 0.7; font-style: italic;">L’Angolagate ou l'industrialisation du chaos — En cours d'archivage.</p>
                 </div>
             </div>
-            <h2 class="external-folder-title">L’Angolagate ou l'industrialisation du chaos</h2>
-        </a>
+        </div>
 
         <a href="article-femmes-resistances.html" class="folder-wrapper" data-aos="fade-up" data-aos-delay="100">
             <div class="folder-container">
@@ -262,10 +260,10 @@
                 <div class="folder-cover"></div>
                 <div class="folder-content">
                     <div class="folder-image" style="background-image: url('article-femme.png');"></div>
+                    <h2 class="folder-title">Les femmes africaines dans les résistances coloniales</h2>
                     <p style="font-size: 0.85rem; color: var(--text-ivory); opacity: 0.7;">Les visages oubliés de la liberté.</p>
                 </div>
             </div>
-            <h2 class="external-folder-title">Les femmes africaines dans les résistances coloniales</h2>
         </a>
 
         <a href="universalisme-europeens.html" class="folder-wrapper" data-aos="fade-up" data-aos-delay="200">
@@ -274,10 +272,10 @@
                 <div class="folder-cover"></div>
                 <div class="folder-content">
                     <div class="folder-image" style="background-image: url('image-universalisme.jpeg');"></div>
+                    <h2 class="folder-title">L'universalisme Européen ou "Quand l'Europe se prend pour l'humanité"</h2>
                     <p style="font-size: 0.85rem; color: var(--text-ivory); opacity: 0.7;">Quand une culture décide de se définir comme une "norme".</p>
                 </div>
             </div>
-            <h2 class="external-folder-title">L'universalisme Européen ou "Quand l'Europe se prend pour l'humanité"</h2>
         </a>
 
     </main>
