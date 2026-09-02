@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { SankofaMark } from './SankofaMark';
 import { pillars } from '@/data/pillars';
 
@@ -73,12 +73,6 @@ export function Navbar() {
             </nav>
 
             <div className="flex items-center gap-3">
-              <button
-                className="hidden lg:flex items-center justify-center w-9 h-9 rounded-full text-offwhite/60 hover:text-lime hover:bg-offwhite/5 transition-colors"
-                aria-label="Rechercher"
-              >
-                <Search size={18} />
-              </button>
               <button
                 className="lg:hidden text-offwhite p-1"
                 onClick={() => setMobileOpen(!mobileOpen)}
