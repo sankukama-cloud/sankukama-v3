@@ -16,8 +16,8 @@ export const team: TeamMember[] = [
   },
   {
     name: 'Nadia Ayoub',
-    role: 'Chercheuse & Rédactrice',
-    bio: "",
+    role: 'Chargée de communication & Créatrice de contenu',
+    bio: ` Étudiante en Brand Management et Marketing, je suis passionnée par la création digitale et le design. D'origines guinéenne et libanaise, rejoindre SANKU KÂMA est pour moi une démarche personnelle forte : réapprendre, me reconnecter à mes racines et valoriser les cultures ouest-africaines. À travers mon rôle, j'apporte une vision créative et accessible pour transmettre cet héritage et toucher le public avec authenticité.`,
     focus: 'Histoire · Études postcoloniales',
     photo: '',
   },
