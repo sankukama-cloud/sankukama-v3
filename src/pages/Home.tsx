@@ -328,7 +328,7 @@ export default function Home() {
                 onClick={() =>
                   setSelectedVideo({
                     insta: "https://www.instagram.com/p/DcwCnrVtrGx/",
-                    tiktok: "",
+                    tiktok: "https://www.tiktok.com/@sanku.kama/video/7680969893134535968",
                   })
                 }
                 className="flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden relative group cursor-pointer shadow-card hover:shadow-cardHover transition-shadow block"
