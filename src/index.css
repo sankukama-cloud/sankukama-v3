@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-offwhite text-anthracite font-sans antialiased;
+    font-feature-settings: 'kern', 'liga';
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-cinzel;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: #D4E157;
+    color: #1A1A1A;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .article-body p {
+    @apply font-lora text-[1.075rem] leading-[1.75] text-anthracite/90 mb-6;
+  }
+
+  .article-body h2 {
+    @apply font-cinzel text-2xl md:text-3xl text-anthracite mt-12 mb-5;
+  }
+
+  .article-body h3 {
+    @apply font-cinzel text-xl md:text-2xl text-mauve mt-10 mb-4;
+  }
+
+  .article-body blockquote {
+    @apply font-lora italic text-lg md:text-xl text-anthracite/80 border-l-4 border-mauve pl-6 my-8;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+/* Style du bloc Prisme Sanku Kamâ */
+.prisme-box ~ p,
+.prisme-box p {
+  color: rgba(250, 250, 249, 0.9) !important;
+}
+
+/* Réinitialiser le texte normal après le prisme dès qu'un nouveau titre H2 apparaît */
+.article-body h2 ~ p {
+  color: inherit;
+}
